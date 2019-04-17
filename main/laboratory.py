@@ -3,7 +3,9 @@ Solución del laboratorio
 """
 
 import statistics
+from LaboratorioColecciones.custom_functions.temperature_methods import *
 
+# Datos de entrada
 datosSantander = {
     "Enero": 22,
     "Febrero": 27,
@@ -49,43 +51,23 @@ datosNarino = {
     "Diciembre": 29
 }
 
-
-def promedio_temperaturas(datos):
-    suma_temp = 0
-    for dato in datos.values():
-        suma_temp = suma_temp + dato
-
-    return suma_temp / 12
-
-
+# ========= Solución a =========
 promedioSantander = promedio_temperaturas(datosSantander)
-
 print("el promedio de temperaturas de SANTANDER fue", promedioSantander)
 
 promedioGuajira = promedio_temperaturas(datosGuajira)
-
 print("el promedio de temperaturas de LA GUAJIRA fue", promedioGuajira)
 
 promedioNarino = promedio_temperaturas(datosNarino)
-
 print("el promedio de temperaturas de NARIÑO fue", promedioNarino)
 
+
+# ========= Solución b =========
 promedioNacional = (promedioSantander + promedioNarino + promedioGuajira) / 3
 print("El promedio nacional fue", promedioNacional)
 
 
-def mes_mas_caliente(datos):
-    temp = 0
-    mes = ""
-
-    for key, value in datos.items():
-        if value > temp:
-            temp = value
-            mes = key
-
-    return mes, temp
-
-
+# ========= Solución c =========
 mesCalienteSantander = mes_mas_caliente(datosSantander)
 print("el mes mas caliente de SANTANDER fue", mesCalienteSantander[0], "con", mesCalienteSantander[1], "grados")
 
@@ -96,13 +78,7 @@ mesCalienteNarino = mes_mas_caliente(datosNarino)
 print("el mes mas caliente de NARIÑO fue", mesCalienteNarino[0], "con", mesCalienteNarino[1], "grados")
 
 
-# Los ultimos 2 meses mas calientes
-
-def promedio_tres_meses_mas_calientes(datos):
-    orden = sorted(datos.values())
-    return (orden[9] + orden[10] + orden[11]) / 3
-
-
+# ========= Solución d =========
 promMesesSantander = promedio_tres_meses_mas_calientes(datosSantander)
 print("el promedio de los tres mes mas caliente de SANTANDER fue", promMesesSantander)
 
@@ -112,9 +88,13 @@ print("el promedio de los tres mes mas caliente de NARIÑO fue", promMesesNarino
 promMesesGuajira = promedio_tres_meses_mas_calientes(datosGuajira)
 print("el promedio de los tres mes mas caliente de GUAJIRA fue", promMesesGuajira)
 
+
+# ========= Solución e =========
 ordenPromedio = sorted([promMesesSantander, promMesesNarino, promMesesGuajira])
 print("el promedio mayor es", ordenPromedio[2])
 
+
+# ========= Solución f =========
 """
 conglomerado = {
     33: {
@@ -154,6 +134,8 @@ datosMasCaliente = conglomerado.get(tempMasCaliente)
 print("el mes mas caliente del año es", datosMasCaliente.get("mes"))
 print("la region mas caliente del año es", datosMasCaliente.get("region"))
 
+
+# ========= Solución g =========
 desviacionEstandarSantander = statistics.stdev(datosSantander.values())
 print("la desviasión estandar de la región de SANTANDER es", desviacionEstandarSantander)
 
